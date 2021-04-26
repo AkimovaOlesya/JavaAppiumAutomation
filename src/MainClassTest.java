@@ -7,11 +7,8 @@ public class MainClassTest{
     @Test
     public void testGetLocalNumber(){
         int number = main.getLocalNumber();
-        if (number == 14){
-            System.out.println("Method return true number");
-        }else {
-            System.out.println("This method return false number");
-        }
+        int actual = 14;
+        Assert.assertTrue("Method getLocalNumber return number != 14", number == actual);
     }
     //Тест 2
     @Test
