@@ -17,10 +17,7 @@ public class MainClassTest{
     @Test
     public void testGetClassNumber(){
         int number = main.getClassNumber();
-        if (number > 45){
-            Assert.assertTrue("The Method getClassNumber return number > 45", true );
-        } else {
-            Assert.fail("The Method getClassNumber return number < 45");
-        }
+        int actual = 45;
+            Assert.assertTrue("The Method getClassNumber return number > 45", number > actual );
     }
 }
