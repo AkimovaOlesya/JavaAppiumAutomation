@@ -17,4 +17,13 @@ public class MainClassTest{
         int actual = 45;
             Assert.assertTrue("The Method getClassNumber return number > 45", number > actual );
     }
+    //Тест 3
+    @Test
+    public void testGetClassString(){
+        String line = main.getClassString();
+        String firstSubstring = "hello";
+        String secondSubstring = "Hello";
+
+        Assert.assertTrue("The Method class_string don't return substring 'hello' or 'Hello'", line.contains(firstSubstring)||line.contains(secondSubstring));
+    }
 }
