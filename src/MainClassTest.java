@@ -15,7 +15,7 @@ public class MainClassTest{
     public void testGetClassNumber(){
         int number = main.getClassNumber();
         int actual = 45;
-            Assert.assertTrue("The Method getClassNumber return number > 45", number > actual );
+            Assert.assertTrue("The Method getClassNumber return number < 45", number > actual );
     }
     //Тест 3
     @Test
