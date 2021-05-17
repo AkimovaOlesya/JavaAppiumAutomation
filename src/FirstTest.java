@@ -39,6 +39,13 @@ public class FirstTest {
     @Test
     public void firstTest()
     {
+        assertElementHasText(
+                "//*[contains(@text, 'Search Wikipedia')]",
+                "Search Wikipedia",
+                "Cannot find text 'Search Wikipedia'",
+                5
+        );
+
         waitForElementByXpathAndClick(
                 "//*[contains(@text, 'Search Wikipedia')]",
                 "Cannot find 'Search Wikipedia' input",
@@ -78,6 +85,11 @@ public class FirstTest {
     private WebElement waitForElementByXpathAndSendKeys(String xpath, String value, String error_message, long timeoutInSeconds){
         WebElement element = waitForElementPresentByXpath (xpath, error_message, timeoutInSeconds);
         element.sendKeys(value);
+        return element;
+    }
+    private WebElement assertElementHasText(String xpath, String value, String error_message, long timeoutInSeconds){
+        WebElement element = waitForElementPresentByXpath (xpath, error_message, timeoutInSeconds);
+        element.getLocation();
         return element;
     }
 }
