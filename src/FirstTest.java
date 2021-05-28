@@ -36,7 +36,7 @@ public class FirstTest {
     {
         driver.quit();
     }
-    @Test
+ /*   @Test
     public void firstTest()
     {
         assertElementHasText(
@@ -64,9 +64,9 @@ public class FirstTest {
                 "Cannot find 'Object-oriented programming language' topic searching by 'Java'",
                 15
         );
-    }
+    }*/
 
-    @Test
+/*    @Test
     public void testCancelSearch(){
         waitForElementAndClick(
                 By.id("org.wikipedia:id/search_container"),
@@ -83,7 +83,58 @@ public class FirstTest {
                 "X is still present on the page",
                 5
         );
+    }*/
+
+    @Test
+    public void testCancelSearch(){
+        assertElementHasText(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Search Wikipedia",
+                "Cannot find text 'Search Wikipedia'",
+                5
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "Cannot find 'Search Wikipedia' input",
+                5
+        );
+
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]") ,
+                "Wikipedia",
+                "Cannot find search input",
+                5
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Free online encyclopedia that anyone can edit']"),
+                "Cannot find 'Free online encyclopedia that anyone can edit' topic searching by 'Wikipedia'",
+                15
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='American non-profit charitable organization']"),
+                "Cannot find 'American non-profit charitable organization' topic searching by 'Wikipedia'",
+                15
+        );
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find X to cancel search",
+                5
+        );
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find X to cancel search",
+                5
+        );
+        waitForElementNotPresent(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "X is still present on the page",
+                5
+        );
     }
+
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(error_message + "\n");
