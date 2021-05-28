@@ -36,50 +36,50 @@ public class FirstTest {
     {
         driver.quit();
     }
-/*    @Test
+    @Test
     public void firstTest()
     {
         assertElementHasText(
-                "//*[contains(@text, 'Search Wikipedia')]",
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
                 "Search Wikipedia",
                 "Cannot find text 'Search Wikipedia'",
                 5
         );
 
-        waitForElementByXpathAndClick(
-                "//*[contains(@text, 'Search Wikipedia')]",
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
                 "Cannot find 'Search Wikipedia' input",
                 5
         );
 
-        waitForElementByXpathAndSendKeys(
-                "//*[contains(@text, 'Search Wikipedia')]",
+        waitForElementAndSendKeys(
+               By.xpath("//*[contains(@text, 'Search Wikipedia')]") ,
                 "Java",
                 "Cannot find search input",
                 5
         );
 
-        waitForElementPresentByXpath(
-                "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']",
+        waitForElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
                 "Cannot find 'Object-oriented programming language' topic searching by 'Java'",
                 15
         );
-    }*/
+    }
 
     @Test
     public void testCancelSearch(){
-        waitForElementByIdAndClick(
-                "org.wikipedia:id/search_container",
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
                 "Cannot find 'Search Wikipedia' input",
                 5
         );
-        waitForElementByIdAndClick(
-                "org.wikipedia:id/search_close_btn",
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
                 "Cannot find X to cancel search",
                 5
         );
         waitForElementNotPresent(
-                "org.wikipedia:id/search_close_btn",
+                By.id("org.wikipedia:id/search_close_btn"),
                 "X is still present on the page",
                 5
         );
@@ -111,7 +111,7 @@ public class FirstTest {
         return element;
     }
 
-    private WebElement waitForElementPresentById (String id, String error_message, long timeoutInSeconds){
+/*    private WebElement waitForElementPresentById (String id, String error_message, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(error_message + "\n");
         By by = By.id(id);
@@ -125,11 +125,10 @@ public class FirstTest {
         element.click();
         return element;
     }
-
-    private boolean waitForElementNotPresent(String id, String error_message, long timeoutInSeconds){
+*/
+    private boolean waitForElementNotPresent(By by, String error_message, long timeoutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(error_message + "\n");
-        By by = By.id(id);
         return wait.until(
                 ExpectedConditions.invisibilityOfElementLocated(by)
         );
