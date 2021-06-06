@@ -41,7 +41,7 @@ public class FirstTest {
     {
         driver.quit();
     }
- /*   @Test
+    @Test
     public void firstTest()
     {
         assertElementHasText(
@@ -70,7 +70,7 @@ public class FirstTest {
                 15
         );
     }
-*/
+
  @Test
  public void testClearSearch(){
 
